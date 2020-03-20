@@ -20,6 +20,8 @@ public class OrderController {
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public List<UserOrder> saveProduct(@RequestBody UserOrder order) {
+//		log.info("OrderController order = {}", order.toString());
+		System.out.println("OrderController order = " + order.toString());
 		orderService.addOrder(order);
 		
 		List<UserOrder> orders = orderService.getOrders(1,  20);

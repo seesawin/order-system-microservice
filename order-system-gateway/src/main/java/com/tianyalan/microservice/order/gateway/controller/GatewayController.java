@@ -19,37 +19,38 @@ import com.tianyalan.microservice.order.gateway.service.ProductHystrixService;
 @RestController
 public class GatewayController {
 
-	@Autowired
-	private CustomerHystrixService customerHystrixService;
-	
-	@Autowired
-	private OrderHystrixService orderHystrixService;
-	
-	@Autowired
-	private ProductHystrixService productHystrixService;
-		
-	@RequestMapping("/gateway")
-	public ResultMessage gateway(Long customerId, String productCode) throws Exception {
-		Customer customer = customerHystrixService.getCustomer(customerId);
-		if(customer == null || customer.getDescription().contains("fail")) {
-			return ResultMessageBuilder.build(false, 
-					"The customer for " + customerId + " is not existed!");
-		}
-		
-		Product product = productHystrixService.getProduct(productCode);
-		if(product == null || product.getDescription().contains("fail")) {
-			return ResultMessageBuilder.build(false, 
-					"The product for " + productCode + " is not existed!");
-		}
-				
-		Order order = new Order();		
-		order.setCustomerId(customerId);
-		order.setProductCode(productCode);
-		order.setCreateTime(new Date());
-		List<Order> orders = orderHystrixService.save(order);
-		
-		return ResultMessageBuilder.build(orders);
-	}
+    @Autowired
+    private CustomerHystrixService customerHystrixService;
+
+    @Autowired
+    private OrderHystrixService orderHystrixService;
+
+    @Autowired
+    private ProductHystrixService productHystrixService;
+
+    @RequestMapping("/gateway")
+    public ResultMessage gateway(Long customerId, String productCode) throws Exception {
+        System.out.println("customerId = " + customerId + ", productCode = " + productCode);
+        Customer customer = customerHystrixService.getCustomer(customerId);
+        if (customer == null || customer.getDescription().contains("fail")) {
+            return ResultMessageBuilder.build(false,
+                    "The customer for " + customerId + " is not existed!");
+        }
+
+        Product product = productHystrixService.getProduct(productCode);
+        if (product == null || product.getDescription().contains("fail")) {
+            return ResultMessageBuilder.build(false,
+                    "The product for " + productCode + " is not existed!");
+        }
+
+        Order order = new Order();
+        order.setCustomerId(customerId);
+        order.setProductCode(productCode);
+        order.setCreateTime(new Date());
+        List<Order> orders = orderHystrixService.save(order);
+
+        return ResultMessageBuilder.build(orders);
+    }
 }
 
 

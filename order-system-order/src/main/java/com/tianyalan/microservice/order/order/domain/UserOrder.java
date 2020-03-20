@@ -46,5 +46,15 @@ public class UserOrder {
 
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "UserOrder{" +
+				"id=" + id +
+				", createTime=" + createTime +
+				", customerId=" + customerId +
+				", productCode='" + productCode + '\'' +
+				'}';
+	}
 }

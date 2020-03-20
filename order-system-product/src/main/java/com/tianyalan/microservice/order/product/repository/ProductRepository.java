@@ -6,5 +6,5 @@ import com.tianyalan.microservice.order.product.domain.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-	Product findByProductName(String productName);
+	Product findByProductCode(String productCode);
 }

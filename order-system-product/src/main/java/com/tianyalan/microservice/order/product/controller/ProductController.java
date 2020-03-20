@@ -17,6 +17,8 @@ public class ProductController {
 	
 	@RequestMapping(value = "/{productCode}", method = RequestMethod.GET)
     public Product getProduct(@PathVariable String productCode) {
+//		log.info("ProductController productCode = {}", productCode);
+		System.out.println("ProductController productCode = " + productCode);
 		Product product = productService.getProductByCode(productCode);
 		
     	return product;

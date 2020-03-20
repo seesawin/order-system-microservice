@@ -1,0 +1,16 @@
+
+order-system-gateway/target/
+
+*.iml
+
+order-system-monitor/target/
+
+order-system-order/target/
+
+order-system-product/target/
+
+order-system-registration/target/
+
+.idea/
+
+*.class

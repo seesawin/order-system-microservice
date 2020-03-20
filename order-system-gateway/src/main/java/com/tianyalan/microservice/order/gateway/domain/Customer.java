@@ -31,5 +31,15 @@ private Long id;
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"id=" + id +
+				", customerCode='" + customerCode + '\'' +
+				", customerName='" + customerName + '\'' +
+				", description='" + description + '\'' +
+				'}';
+	}
 }
